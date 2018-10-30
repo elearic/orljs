@@ -1,16 +1,20 @@
 import React from 'react';
-import MainLayout from '../../MainLayout/MainLayout';
+import MainLayout from '../../mainLayout/MainLayout';
+import { connect } from 'dva';
 
-const UserPage = (props) => {
-  
-  return (
-    <MainLayout>
-        <div>Hello world</div>
-    </MainLayout>
-    );
-};
+class UserPage extends React.Component{
+    
 
-UserPage.propTypes = {
-};
-
-export default UserPage;
+    render(){
+        console.log("UserPage渲染了")
+        return (
+            <MainLayout>
+           <div>hello world!!!</div>
+           </MainLayout>
+            );
+        };
+}
+function mapStateToProps(){
+    return{}
+}
+export default connect(mapStateToProps)(UserPage);

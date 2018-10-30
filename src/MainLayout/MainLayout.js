@@ -2,6 +2,8 @@ import React from 'react';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import './MainLayout.css';
 import { routerRedux } from 'dva/router';
+import { connect } from 'dva';
+
 
 import {UserPage} from '../components/User/UserPage';
 
@@ -17,45 +19,38 @@ class MainLayout extends React.Component{
     }
   }
 
-  handleOnClick(item, key, keyPath){
-    this.setState({
-      userpage:key
-    })
+  handleOnClick(item){
+    if(item.key == "1"){
+      this.props.dispatch(routerRedux.push("/login"));
+    }
   }
 
-
-
-  render(){
-
-    let getContent = () =>{
-      return (<div> hello world!!!</div>);
-    };
-
+  render(){ 
     return (
-      <Layout>
-      <Header>
-        <div>
-        <div className="logo" style={{width:'10%',color:'white',float: 'left'}}>Elearic Dva</div>
-        <div style={{width:'80%'}}>
-          <Menu
-            theme="dark"
-            mode="horizontal"
-            defaultSelectedKeys={['2']}
-            style={{ lineHeight: '64px' }}
-            onClick={this.handleOnClick.bind(this)} 
-          >
-            <Menu.Item key="1" >首页</Menu.Item>
-            <Menu.Item key="2" >用户管理</Menu.Item>
-            <Menu.Item key="3">政务管理</Menu.Item>
-          </Menu>
-        </div>
-        </div>
-      </Header>
-      <div>
-        {getContent()}
-      </div>
-    </Layout>
+        <Layout>
+         <Header>
+          <div>
+            <div className="logo" style={{width:'10%',color:'white',float: 'left'}}>Elearic Dva</div>
+            <div style={{width:'80%'}}>
+              <Menu
+                theme="dark"
+                mode="horizontal"
+                defaultSelectedKeys={['2']}
+                style={{ lineHeight: '64px' }}
+                onClick={this.handleOnClick.bind(this)} 
+              >
+                <Menu.Item key="1" >首页_1</Menu.Item>
+                <Menu.Item key="2" >用户管理_2</Menu.Item>
+                <Menu.Item key="3" >政务管理</Menu.Item>
+              </Menu>
+            </div>
+          </div>
+       </Header>
+      </Layout>
     )
   };
 }
- export default MainLayout;
+function mapStateToProps(){
+  return{}
+}
+export default connect(mapStateToProps)(MainLayout);
