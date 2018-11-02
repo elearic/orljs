@@ -25,23 +25,23 @@ module.exports = (webpackConfig, env) => {
     )
   }
 
-  webpackConfig.plugins = webpackConfig.plugins.concat([
-    new CopyWebpackPlugin([
-      {
-        from: 'src/public',
-        to: production ? '../' : webpackConfig.output.outputPath,
-      },
-    ]),
-    new HtmlWebpackPlugin({
-      template: `${__dirname}/src/entry.ejs`,
-      filename: production ? '../index.html' : 'index.html',
-      minify: production ? {
-        collapseWhitespace: true,
-      } : null,
-      hash: true,
-      headScripts: production ? null : ['/roadhog.dll.js'],
-    }),
-  ])
+  // webpackConfig.plugins = webpackConfig.plugins.concat([
+  //   new CopyWebpackPlugin([
+  //     {
+  //       from: 'src/public',
+  //       to: production ? '../' : webpackConfig.output.outputPath,
+  //     },
+  //   ]),
+  //   new HtmlWebpackPlugin({
+  //     template: `${__dirname}/src/entry.ejs`,
+  //     filename: production ? '../index.html' : 'index.html',
+  //     minify: production ? {
+  //       collapseWhitespace: true,
+  //     } : null,
+  //     hash: true,
+  //     headScripts: production ? null : ['/roadhog.dll.js'],
+  //   }),
+  // ])
 
   // Alias
   webpackConfig.resolve.alias = {
@@ -57,3 +57,5 @@ module.exports = (webpackConfig, env) => {
 
   return webpackConfig
 }
+
+ 
