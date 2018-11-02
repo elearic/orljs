@@ -10,9 +10,9 @@ function RouterConfig({ history }) {
     <ConnectedRouter history={history}>
        <Router >
         <div>
-         <Route path="/" exct component={IndexPage} />
           <Route path="/index" exct  component={IndexPage} />
           <Route path="/login" component={LoginPage} />
+          <Route path="/user" component={UserPage} />          
         </div>
         </Router>
     </ConnectedRouter>

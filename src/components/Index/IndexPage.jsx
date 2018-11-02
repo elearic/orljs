@@ -11,23 +11,14 @@ class IndexPage extends React.Component {
 
    render(){
     return (
-            <MainLayout>IndexPage</MainLayout>
+          <MainLayout>IndexPage</MainLayout>
     )}
   };
+  
+  IndexPage.propTypes = {
+  }
 
-
-
-  // #components-form-demo-normal-login .login-form {
-  //   max-width: 300px;
-  // }
-  // #components-form-demo-normal-login .login-form-forgot {
-  //   float: right;
-  // }
-  // #components-form-demo-normal-login .login-form-button {
-  //   width: 100%;
-  // }
-  export default IndexPage;
-// function mapStateToProps(){
-//   return{}
-// }
-// export default connect(mapStateToProps)(IndexPage);
+function mapStateToProps(){
+  return{}
+}
+export default connect(mapStateToProps)(IndexPage);

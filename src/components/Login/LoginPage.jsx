@@ -63,17 +63,11 @@ class LoginPage extends React.Component {
     )}
   };
 
+  // Form.create 后 from 自动注册到this.props
   LoginPage =  Form.create({})(LoginPage);
-
-  // #components-form-demo-normal-login .login-form {
-  //   max-width: 300px;
-  // }
-  // #components-form-demo-normal-login .login-form-forgot {
-  //   float: right;
-  // }
-  // #components-form-demo-normal-login .login-form-button {
-  //   width: 100%;
-  // }
+  
+  LoginPage.propTypes = {
+  }
 
 function mapStateToProps(){
   return{}

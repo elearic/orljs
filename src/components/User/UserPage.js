@@ -4,16 +4,22 @@ import { connect } from 'dva';
 
 class UserPage extends React.Component{
     
+    constructor(props){
+        super(props);
+    }
 
     render(){
-        console.log("UserPage渲染了")
         return (
-            <MainLayout>
+        <MainLayout>
            <div>hello world!!!</div>
-           </MainLayout>
+        </MainLayout>
             );
         };
-}
+    }
+
+    UserPage.propTypes = {
+    }
+
 function mapStateToProps(){
     return{}
 }
