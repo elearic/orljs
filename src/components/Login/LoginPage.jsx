@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import './LoginPage.less';
+import { routerRedux } from 'dva/router';
 
 const FormItem = Form.Item;
 
@@ -21,6 +22,14 @@ class LoginPage extends React.Component {
       e.preventDefault();
       this.props.form.validateFields((err, values) => {
         if (!err) {
+          // this.props.dispatch(routerRedux.push({pathname:'/index'}))
+          this.props.dispatch({
+            type: 'login/login',
+            payload: {
+             username:"guest",
+             password:"guest"
+            }
+          })
           console.log('Received values of form: ', values);
         }
       });

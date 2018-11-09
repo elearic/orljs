@@ -1,19 +1,27 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const webpack = require('webpack')
+const webpack = require('webpack-dev-server')
 
 module.exports = (webpackConfig, env) => {
+
   const production = env === 'production'
   // FilenameHash
   webpackConfig.output.chunkFilename = '[name].[chunkhash].js'
 
   if (production) {
     if (webpackConfig.module) {
+      console.log("hhhhhhhhh")
     // ClassnameHash
       webpackConfig.module.rules.map((item) => {
         if (String(item.test) === '/\\.less$/' || String(item.test) === '/\\.css/') {
           item.use.filter(iitem => iitem.loader === 'css')[0].options.localIdentName = '[hash:base64:5]'
         }
+
+        if (String(item.test) === '/\\.jsx/' || String(item.test) === '/\\.js/') {
+          item.loader = 'babel-loader';
+          item.options = {presets:["es2015"]};
+        }
+
         return item
       })
     }
@@ -25,23 +33,23 @@ module.exports = (webpackConfig, env) => {
     )
   }
 
-  // webpackConfig.plugins = webpackConfig.plugins.concat([
-  //   new CopyWebpackPlugin([
-  //     {
-  //       from: 'src/public',
-  //       to: production ? '../' : webpackConfig.output.outputPath,
-  //     },
-  //   ]),
-  //   new HtmlWebpackPlugin({
-  //     template: `${__dirname}/src/entry.ejs`,
-  //     filename: production ? '../index.html' : 'index.html',
-  //     minify: production ? {
-  //       collapseWhitespace: true,
-  //     } : null,
-  //     hash: true,
-  //     headScripts: production ? null : ['/roadhog.dll.js'],
-  //   }),
-  // ])
+  webpackConfig.plugins = webpackConfig.plugins.concat([
+    new CopyWebpackPlugin([
+      {
+        from: 'src/public',
+        to: production ? '../' : webpackConfig.output.outputPath,
+      },
+    ]),
+    new HtmlWebpackPlugin({
+      template: `${__dirname}/src/entry.ejs`,
+      filename: production ? '../index.html' : 'index.html',
+      minify: production ? {
+        collapseWhitespace: true,
+      } : null,
+      hash: true,
+      headScripts: production ? null : ['/roadhog.dll.js'],
+    }),
+  ])
 
   // Alias
   webpackConfig.resolve.alias = {
@@ -57,5 +65,3 @@ module.exports = (webpackConfig, env) => {
 
   return webpackConfig
 }
-
- 

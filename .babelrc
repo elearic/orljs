@@ -1,3 +1,12 @@
 {
-    "presets": ["react", "es2015"]
-  }
+  "presets": ["env"],
+   // Remove the line below to enable ES2015 support.
+   "only": "gulpfile.babel.js",
+   "retainLines": true,
+   "plugins": [
+      "transform-es2015-arrow-functions", //转译箭头函数
+      "transform-es2015-classes", //转译class语法
+      "transform-es2015-spread", //转译数组解构
+      "transform-es2015-for-of" //转译for-of
+   ]
+}

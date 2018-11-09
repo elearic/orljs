@@ -8,7 +8,7 @@ class IndexPage extends React.Component {
     constructor(props){
       super(props);
     }
-
+    
    render(){
     return (
           <MainLayout>IndexPage</MainLayout>

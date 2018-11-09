@@ -19,7 +19,6 @@ class MainLayout extends React.Component{
   }
 
   handleOnClick(item){
-    console.log("MainLayout..item.key",item.key);
     if(item.key == "1"){
       this.props.dispatch(routerRedux.push({pathname:'/login'}));
     }else if(item.key == "2"){
