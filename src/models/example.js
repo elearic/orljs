@@ -2,7 +2,7 @@
 export default {
 
   namespace: 'example',
-  
+
   state: {},
 
   subscriptions: {
