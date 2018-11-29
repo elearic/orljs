@@ -7,12 +7,8 @@ import MainLayout from '../mainLayout/MainLayout';
 
 function IndexPage() {
   return (
-    <div>
-      <div>
-         <MainLayout></MainLayout>
-      </div>
-    </div>
-  );
+          <MainLayout></MainLayout>
+      );
 }
 
 IndexPage.propTypes = {
